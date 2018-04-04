@@ -12,6 +12,12 @@ describe('Store', () => {
     const testObject2 = { bird: 'goldfinch', color: 'yellow' };
     const testObject3 = { bird: 'raven', color: 'black' };
 
+    function loadList(one, two, three) {
+        storeInstance.save(one);
+        storeInstance.save(two);
+        storeInstance.save(three);
+    } 
+
     it('exists and has a property "list" that is an empty array', () => {
         assert.deepEqual(storeInstance.list, []);
     });
@@ -35,12 +41,16 @@ describe('Store', () => {
     });
 
     it('has a get method that returns the object with a certain id', () => {
-        storeInstance.save(testObject1);
-        storeInstance.save(testObject2);
-        storeInstance.save(testObject3);
+        loadList(testObject1, testObject2, testObject3);
         const chosenObject = storeInstance.list[1];
         const chosenId = storeInstance.list[1]._id;
         const gotten = storeInstance.get(chosenId);
         assert.equal(chosenObject, gotten);
+    });
+
+    it('has a getAll method that returns an array of all stored object', () => {
+        loadList(testObject1, testObject2, testObject3);
+        const allObjects = storeInstance.getAll();
+        assert.deepEqual(storeInstance.list, allObjects);        
     });
 });
