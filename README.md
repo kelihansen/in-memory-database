@@ -1,7 +1,7 @@
 In-Memory Database
 ===
 
-A database that doesn't persist and that's hard to access! Designed for practicing TDD, Node modules, ES6 classes, and array methods.
+A database that doesn't persist and that's hard to access! Designed for practicing TDD, Node modules, ES6 classes, finding/using new packages, and array methods.
 
 ## Contributors
 
