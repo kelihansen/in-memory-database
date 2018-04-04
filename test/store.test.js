@@ -1,6 +1,6 @@
 const assert = require('assert');
 const Store = require('../lib/store');
-
+const shortid = require('shortid');
 
 describe('Store', () => {
     let storeInstance;
@@ -14,7 +14,7 @@ describe('Store', () => {
 
     it('has a save method that adds a new id to an object and returns that object', () => {
         const newlyIdentified = storeInstance.save({});
-        const idCheck = newlyIdentified._id ? true : false;
+        const idCheck = shortid.isValid(newlyIdentified._id);
         assert.equal(idCheck, true);
     });
 
