@@ -53,4 +53,9 @@ describe('Store', () => {
         const allObjects = storeInstance.getAll();
         assert.deepEqual(storeInstance.list, allObjects);        
     });
+
+    it('has a getAll method the returns an empty array when there are no objects', () => {
+        const allObjects = storeInstance.getAll();
+        assert.deepEqual(allObjects, []);
+    });
 });
