@@ -70,4 +70,17 @@ describe('Store', () => {
         const removedReport = storeInstance.remove('fake id');
         assert.deepEqual(removedReport, { removed: false });
     });
+
+    it('has a remove method that removes the object with a certain id', () => {
+        loadList(testObject1, testObject2, testObject3);
+        const chosenObject = storeInstance.list[1];
+        const otherObject = storeInstance.list[0];
+        const chosenId = storeInstance.list[1]._id;
+        const removedReport = storeInstance.remove(chosenId);
+        const inclusionTest = storeInstance.list.includes(chosenObject);
+        const otherObjectsUnchangedTest = storeInstance.list.includes(otherObject);
+        assert.deepEqual(removedReport, { removed: true });
+        assert.equal(inclusionTest, false);
+        assert.equal(otherObjectsUnchangedTest, true);
+    });
 });
