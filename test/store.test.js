@@ -65,4 +65,9 @@ describe('Store', () => {
         const equivalencyTest = storeInstance.list === allObjects;
         assert.equal(equivalencyTest, false);
     });
+
+    it('has a remove method that returns { removed: false } if id passed in does not exist', () => {
+        const removedReport = storeInstance.remove('fake id');
+        assert.deepEqual(removedReport, { removed: false });
+    });
 });
