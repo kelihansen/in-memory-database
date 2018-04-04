@@ -48,7 +48,7 @@ describe('Store', () => {
         assert.equal(chosenObject, gotten);
     });
 
-    it('has a getAll method that returns an array of all stored object', () => {
+    it('has a getAll method that returns an array of all stored objects', () => {
         loadList(testObject1, testObject2, testObject3);
         const allObjects = storeInstance.getAll();
         assert.deepEqual(storeInstance.list, allObjects);        
