@@ -9,8 +9,8 @@ describe('Store', () => {
     });
 
     const testObject1 = { bird: 'cardinal', color: 'red' };
-    // const testObject2 = { bird: 'goldfinch', color: 'yellow' };
-    // const testObject3 = { bird: 'raven', color: 'black' };
+    const testObject2 = { bird: 'goldfinch', color: 'yellow' };
+    const testObject3 = { bird: 'raven', color: 'black' };
 
     it('exists and has a property "list" that is an empty array', () => {
         assert.deepEqual(storeInstance.list, []);
@@ -32,5 +32,15 @@ describe('Store', () => {
         const gotten = storeInstance.get('fake id');
         const nullTest = gotten === null ? true : false;
         assert.equal(nullTest, true);
+    });
+
+    it('has a get method that returns the object with a certain id', () => {
+        storeInstance.save(testObject1);
+        storeInstance.save(testObject2);
+        storeInstance.save(testObject3);
+        const chosenObject = storeInstance.list[1];
+        const chosenId = storeInstance.list[1]._id;
+        const gotten = storeInstance.get(chosenId);
+        assert.equal(chosenObject, gotten);
     });
 });
