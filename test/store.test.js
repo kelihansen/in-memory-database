@@ -58,4 +58,11 @@ describe('Store', () => {
         const allObjects = storeInstance.getAll();
         assert.deepEqual(allObjects, []);
     });
+
+    it('has a getAll method that does not return the underlying array', () => {
+        loadList(testObject1, testObject2, testObject3);
+        const allObjects = storeInstance.getAll();
+        const equivalencyTest = storeInstance.list === allObjects;
+        assert.equal(equivalencyTest, false);
+    });
 });
